@@ -19,17 +19,16 @@ rankall <- function(outcome, num="best") {
             filtered <- d[d$state == s, ]  # the dataframe rows for this state
             n <- cbind(filtered, filtered[outcome])  # append a copy of the outcome column of interest
             n <- n[c(1,2,6)]  # now remove the original outcome columns
-            print(n)
+            out <- n[order(n[[3]], n[[1]], na.last=NA), ]
+            if (num == "best") {
+                  print(unlist(out[1,1]))
+            } else if(num == "worst") {
+                  print(unlist(out[nrow(out),1]))
+            } else {
+                  print(unlist(out[as.integer(num),1]))  # grab the nth row, where n = the 'num' argument
+            }
       }
       
 
-#       out <- n[order(n[[3]], n[[1]], na.last=NA), ]
-#       
-#       if (num == "best") {
-#             return(unlist(out[1,1]))
-#       } else if(num == "worst") {
-#             return(unlist(out[nrow(out),1]))
-#       } else {
-#             return(unlist(out[as.integer(num),1]))  # grab the nth row, where n = the 'num' argument
-#       }
+
 }
