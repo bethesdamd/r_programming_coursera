@@ -35,8 +35,8 @@ rankhospital <- function(state, outcome, num = "best") {
       # print(filtered)
       # indexes_of_min <- which(vals == min(vals, na.rm=T))  # the index(es) of the minimum row(s)
 
-      n <- cbind(filtered, filtered[outcome])  # append the outcome column of interest
-      n <- n[c(1,2,6)]  # now remove the original outcome columns
+      n <- cbind(filtered, filtered[outcome])  # append a copy of the outcome column of interest
+      n <- n[c(1,2,6)]  # now remove the original outcome columns, leaving just the one outcome column
       out <- n[order(n[[3]], n[[1]], na.last=NA), ]
       # out <- cbind(out, c(1:nrow(out)))  # add numerical series column to the end, used for ranking
       
