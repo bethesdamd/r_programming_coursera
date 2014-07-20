@@ -41,10 +41,10 @@ rankhospital <- function(state, outcome, num = "best") {
       # out <- cbind(out, c(1:nrow(out)))  # add numerical series column to the end, used for ranking
       
       if (num == "best") {
-            return(out[1,])
+            return(unlist(out[1,1]))
       } else if(num == "worst") {
-            return(out[nrow(out),])
+            return(unlist(out[nrow(out),1]))
       } else {
-            return(out[as.integer(num),])  # grab the nth row, where n = the 'num' argument
+            return(unlist(out[as.integer(num),1]))  # grab the nth row, where n = the 'num' argument
       }
 }
